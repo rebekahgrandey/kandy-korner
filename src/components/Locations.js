@@ -20,7 +20,7 @@ export const Locations = () => {
             {
                 locations.map((location) => {
                     return (
-                        <div key={location.id} className={location.id}>{location.address}{location.sqFt}</div>
+                        <div key={location.id} className={location.id}>{location.address} - {location.sqFt} square feet</div>
                     )
                 })
             }
