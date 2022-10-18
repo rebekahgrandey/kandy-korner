@@ -8,7 +8,7 @@ export const ProductList = () => {
 
     useEffect(
         () => {
-            fetch(`http://localhost:8088/products`)
+            fetch(`http://localhost:8088/products?_expand=productType`)
                 .then(response => response.json())
                 .then((productArray) => {
                     setProducts(productArray)
@@ -57,8 +57,9 @@ export const ProductList = () => {
                 filteredProducts.map(
                     (product) => {
                         return <section key={product.id} className="product">
-                            <header>{product.name}</header>
-                            <footer>Price: {product.pricePerUnit}</footer>
+                            <h2>{product.name}</h2>
+                            <div>Price: {product.pricePerUnit}</div>
+                            <div>Product Category: {product.productType.type}</div>
                         </section>
                     }
                 )
@@ -68,4 +69,4 @@ export const ProductList = () => {
 
 }
 
-//TODO sort by product name
+//TODO _sort by product name
