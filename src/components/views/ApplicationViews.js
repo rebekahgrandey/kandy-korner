@@ -1,9 +1,11 @@
 import { Outlet, Route, Routes } from "react-router-dom"
+import { CreateProductForm } from "../forms/CreateProductForm"
 import { Locations } from "../Locations"
 import { ProductList } from "../products/Products"
 
 export const ApplicationViews = () => {
-	return <>
+	
+return <>
 		<Routes>
 			<Route path="/" element={
 				<>
@@ -15,9 +17,10 @@ export const ApplicationViews = () => {
 
 				<Route path="locations" element={<Locations />} />
 				<Route path="products" element={<ProductList />} />
+				<Route path="create-form" element={<CreateProductForm />} />
 			</Route>
 		</Routes>
 	</>
 }
 
-//~ ^  is used in parent route elements to render their child route elements
+//~ ^  OUTLET is used in parent route elements to render their child route elements

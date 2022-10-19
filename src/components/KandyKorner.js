@@ -1,26 +1,40 @@
-import { Route, Routes } from "react-router-dom"
-import { Authorized } from "./views/Authorized"
-import { ApplicationViews } from "./views/ApplicationViews"
-import { NavBar } from "./nav/NavBar"
-import { Login } from "./auth/Login"
-import { Register } from "./auth/Register"
-import "./KandyKorner.css"
-
+import { Route, Routes } from "react-router-dom";
+import { Authorized } from "./views/Authorized";
+import { useState, useEffect } from "react";
+import { ApplicationViews } from "./views/ApplicationViews";
+import { NavBar } from "./nav/NavBar";
+import { Login } from "./auth/Login";
+import { Register } from "./auth/Register";
+import "./KandyKorner.css";
+import { CreateProductForm } from "./forms/CreateProductForm";
 
 export const KandyKorner = () => {
-	return <Routes>
-		<Route path="/login" element={<Login />} />
-		<Route path="/register" element={<Register />} />
+	const [products, setProducts] = useState([])	
+	
+	useEffect(() => {
+    fetch(`http://localhost:8088/products?_expand=productType`)
+      .then((response) => response.json())
+      .then((productArray) => {
+        setProducts(productArray);
+      });
+  }, []);
 
-		<Route path="*" element={
-			<Authorized>
-				<>
-					<NavBar />
-					<ApplicationViews />
-				</>
-			</Authorized>
+  return (
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
 
-		} />
-	</Routes>
-}
-
+      <Route
+        path="*"
+        element={
+          <Authorized>
+            <>
+              <NavBar />
+              <ApplicationViews />
+            </>
+          </Authorized>
+        }
+      />
+    </Routes>
+  );
+};

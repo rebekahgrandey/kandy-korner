@@ -17,6 +17,7 @@ export const NavBar = () => {
             kandyUserObject.staff
                 ? <li className="navbar__item navbar__products">
                 <Link className="navbar__link" to="/products">All Products</Link>
+                <Link className="navbar__link" to="/create-form">Add New Product</Link>
             </li>
                 : ""
         }

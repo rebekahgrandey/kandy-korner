@@ -17,7 +17,7 @@ export const ProductList = () => {
         },
         []
     )
-
+    //? how does it know what toggle is
     useEffect(
         () => {
             if (toggle) {
@@ -59,7 +59,7 @@ export const ProductList = () => {
                         return <section key={product.id} className="product">
                             <h2>{product.name}</h2>
                             <div>Price: {product.pricePerUnit}</div>
-                            <div>Product Category: {product.productType.type}</div>
+                            <div>Category: {product.productType.type}</div>
                         </section>
                     }
                 )

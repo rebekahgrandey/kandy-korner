@@ -15,8 +15,8 @@ export const Locations = () => {
     }, [])
 
     return (<>
-        <h1>Store Locations</h1>
-        <div className="location-container">
+        <h1 className="locations-title">Store Locations</h1>
+        <div className="locations-container">
             {
                 locations.map((location) => {
                     return (
